@@ -1,4 +1,4 @@
-
+// variables
 int LED0 = 12;
 int LED1 = 14;
 int LED2 = 27;
@@ -13,6 +13,7 @@ void setup() {
   pinMode(LED2, OUTPUT);
   pinMode(LED3, OUTPUT);
   pinMode(LED4, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -24,6 +25,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, LOW);
+  Serial.println("0");
   delay(waittime);
 
   // 1
@@ -32,6 +34,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, HIGH);
+  Serial.println("1");
   delay(waittime);
 
   // 2
@@ -40,6 +43,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, LOW);
+  Serial.println("2");
   delay(waittime);
 
   // 3
@@ -48,6 +52,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, HIGH);
+  Serial.println("3");
   delay(waittime);
 
   // 4
@@ -56,6 +61,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, LOW);
+  Serial.println("4");
   delay(waittime);
 
   // 5
@@ -64,6 +70,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, HIGH);
+  Serial.println("5");
   delay(waittime);
 
   // 6
@@ -72,6 +79,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, LOW);
+  Serial.println("6");
   delay(waittime);
 
   // 7
@@ -80,6 +88,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, HIGH);
+  Serial.println("7");
   delay(waittime);
 
   // 8
@@ -88,6 +97,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, LOW);
+  Serial.println("8");
   delay(waittime);
 
   // 9
@@ -96,6 +106,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, HIGH);
+  Serial.println("9");
   delay(waittime);
 
   // 10
@@ -104,6 +115,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, LOW);
+  Serial.println("10");
   delay(waittime);
 
   // 11
@@ -112,6 +124,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, HIGH);
+  Serial.println("11");
   delay(waittime);
 
   // 12
@@ -120,6 +133,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, LOW);
+  Serial.println("12");
   delay(waittime);
 
   // 13
@@ -128,6 +142,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, HIGH);
+  Serial.println("13");
   delay(waittime);
 
   // 14
@@ -136,6 +151,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, LOW);
+  Serial.println("14");
   delay(waittime);
 
   // 15
@@ -144,6 +160,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, HIGH);
+  Serial.println("15");
   delay(waittime);
 
   // 16
@@ -152,6 +169,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, LOW);
+  Serial.println("16");
   delay(waittime);
 
   // 17
@@ -160,6 +178,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, HIGH);
+  Serial.println("17");
   delay(waittime);
 
   // 18
@@ -168,6 +187,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, LOW);
+  Serial.println("18");
   delay(waittime);
 
   // 19
@@ -176,6 +196,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, HIGH);
+  Serial.println("19");
   delay(waittime);
 
   // 20
@@ -184,6 +205,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, LOW);
+  Serial.println("20");
   delay(waittime);
 
   // 21
@@ -192,14 +214,16 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, HIGH);
+  Serial.println("21");
   delay(waittime);
 
-  // 20
+  // 22
   digitalWrite(LED0, HIGH);
   digitalWrite(LED1, LOW);
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, LOW);
+  Serial.println("22");
   delay(waittime);
 
   // 23
@@ -208,6 +232,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, HIGH);
+  Serial.println("23");
   delay(waittime);
 
   // 24
@@ -216,6 +241,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, LOW);
+  Serial.println("24");
   delay(waittime);
 
   // 25
@@ -224,6 +250,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, HIGH);
+  Serial.println("25");
   delay(waittime);
 
   // 26
@@ -232,6 +259,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, LOW);
+  Serial.println("26");
   delay(waittime);
 
   // 27
@@ -240,6 +268,7 @@ void loop() {
   digitalWrite(LED2, LOW);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, HIGH);
+  Serial.println("27");
   delay(waittime);
 
   // 28
@@ -248,6 +277,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, LOW);
+  Serial.println("28");
   delay(waittime);
 
   // 29
@@ -256,6 +286,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, LOW);
   digitalWrite(LED4, HIGH);
+  Serial.println("29");
   delay(waittime);
 
   // 30
@@ -264,6 +295,7 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, LOW);
+  Serial.println("30");
   delay(waittime);
 
   // 31
@@ -272,5 +304,6 @@ void loop() {
   digitalWrite(LED2, HIGH);
   digitalWrite(LED3, HIGH);
   digitalWrite(LED4, HIGH);
+  Serial.println("31");
   delay(waittime);
 }
