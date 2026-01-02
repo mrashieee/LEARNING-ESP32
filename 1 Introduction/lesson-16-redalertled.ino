@@ -1,7 +1,6 @@
 int brdNum = 9600;
-String myPrompt = "What is your number: ";
-int myNum;
-int rem;
+String myPrompt = "What is your color: ";
+String myColor;
 
 void setup() {
   // put your setup code here, to run once:
@@ -20,17 +19,14 @@ void loop() {
   while (Serial.available() == 0) {
 
   }
-  myNum = Serial.parseInt();
+  myColor = Serial.readStringUntil('\n');
+  myColor.toLowerCase();
   clearSerial();
-  rem = myNum % 2;
-  
-  if (myNum == 0) {
-    Serial.println("Zero");
+  if (myColor == "red") {
+    Serial.println("RED ALERT!!!");
   }
-  else if (rem == 0) {
-    Serial.println("Even");
-  }
-  else {
-    Serial.println("Odd");
+  if (myColor != "red") {
+    Serial.print("Your color is: ");
+    Serial.println(myColor);
   }
 }

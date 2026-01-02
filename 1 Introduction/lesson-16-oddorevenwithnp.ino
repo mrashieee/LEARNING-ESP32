@@ -23,14 +23,19 @@ void loop() {
   myNum = Serial.parseInt();
   clearSerial();
   rem = myNum % 2;
-  
+  if (myNum > 0 && rem == 0) {
+    Serial.println("You have a Positive Even Number!");
+  }
+  if (myNum < 0 && rem == 0) {
+    Serial.println("You have a Negative Even Number!");
+  }
+  if (myNum > 0 && rem != 0) {
+    Serial.println("You have a Positive Odd Number!");
+  }
+  if (myNum < 0 && rem != 0) {
+    Serial.println("You have a Negative Odd Number!");
+  }
   if (myNum == 0) {
-    Serial.println("Zero");
-  }
-  else if (rem == 0) {
-    Serial.println("Even");
-  }
-  else {
-    Serial.println("Odd");
+    Serial.println("You have a Zero number!");
   }
 }
