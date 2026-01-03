@@ -2,8 +2,12 @@ int brdNum = 9600;
 int red = 12;
 int yellow = 14;
 int green = 27;
-String myPrompt = "What is your color: ";
+String myPrompt = "What color you want? ";
+String myQuest = "What brightness for the led?(0-100) ";
 String myColor;
+int myBright;
+int brightOFF = 0;
+int brightness;
 
 void setup() {
   // put your setup code here, to run once:
@@ -28,28 +32,36 @@ void loop() {
   myColor = Serial.readStringUntil('\n');
   myColor.toLowerCase();
   clearSerial();
+
+  Serial.println(myQuest);
+  while (Serial.available() == 0) {
+
+  }
+  myBright = Serial.parseInt();
+  clearSerial();
+  brightness = myBright*255/100;
   if (myColor == "red") {
     Serial.println("red led ON");
-    digitalWrite(red, HIGH);
-    digitalWrite(yellow, LOW);
-    digitalWrite(green, LOW);
+    analogWrite(red, brightness);
+    analogWrite(yellow, brightOFF);
+    analogWrite(green, brightOFF);
   }
   else if (myColor == "green") {
     Serial.println("green led ON");
-    digitalWrite(green, HIGH);
-    digitalWrite(red, LOW);
-    digitalWrite(yellow, LOW);
+    analogWrite(green, brightness);
+    analogWrite(red, brightOFF);
+    analogWrite(yellow, brightOFF);
   }
   else if (myColor == "yellow") {
     Serial.println("yellow led ON");
-    digitalWrite(yellow, HIGH);
-    digitalWrite(red, LOW);
-    digitalWrite(green, LOW);
+    analogWrite(yellow, brightness);
+    analogWrite(red, brightOFF);
+    analogWrite(green, brightOFF);
   }
   else {
     Serial.println("led not available");
-    digitalWrite(red, LOW);
-    digitalWrite(yellow, LOW);
-    digitalWrite(green, LOW);
+    analogWrite(red, brightOFF);
+    analogWrite(yellow, brightOFF);
+    analogWrite(green, brightOFF);
   }
 }
