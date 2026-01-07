@@ -41,11 +41,13 @@ void loop() {
     Serial.println(grades[i]);
   }
   Serial.print("Average Grade is: ");
+  sumGrades=0;
   for (i=0;i<numGrades;i++) {
     sumGrades+=grades[i];
   }
   averageGrade = sumGrades/numGrades;
   Serial.println(averageGrade);
+  highestGrade = 0;
   for (i=0;i<numGrades;i++) {
     if (highestGrade < grades[i]) {
       highestGrade=grades[i];
