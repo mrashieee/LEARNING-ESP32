@@ -12,7 +12,7 @@
  *    - Track elapsed time with variables instead of blocking
  *    - Each LED should operate independently without affecting the others
  * 
- * 2. Add debouncing to the button using a hardware interrupt
+ * 2. Add debouncing to the button and a hardware interrupt
  *    - Use attachInterrupt() to detect button presses
  *    - The button should ignore rapid state changes (bouncing)
  *    - Only register a press after the state has been stable for a short time
@@ -27,7 +27,7 @@
  * HINTS:
  * - You will need to track "previousMillis" for each timed operation
  * - Use state variables to remember what each LED is doing between loop() calls
- * - For the interrupt, use a volatile flag that the ISR sets and loop() reads
+ * - For the interrupt, remember to use a volatile flag that the ISR sets and loop() reads
  * - For debouncing, track when the button state last changed
  * 
  * ============================================================================
