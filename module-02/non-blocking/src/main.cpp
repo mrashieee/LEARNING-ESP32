@@ -1,3 +1,38 @@
+/*
+ * ============================================================================
+ * NON-BLOCKING LED EXERCISE
+ * ============================================================================
+ * 
+ * CURRENT BEHAVIOR:
+ * This sketch controls three LEDs and a button. However, it uses delay()
+ * which blocks the processor and causes poor responsiveness.
+ * 
+ * YOUR TASK:
+ * 1. Convert ALL delay() calls to non-blocking timing using millis()
+ *    - Track elapsed time with variables instead of blocking
+ *    - Each LED should operate independently without affecting the others
+ * 
+ * 2. Add debouncing to the button using a hardware interrupt
+ *    - Use attachInterrupt() to detect button presses
+ *    - The button should ignore rapid state changes (bouncing)
+ *    - Only register a press after the state has been stable for a short time
+ *    - Remember: ISR functions should be short and use volatile variables
+ * 
+ * EXPECTED RESULT:
+ * - The blink LED should toggle at its own interval
+ * - The fade LED should smoothly fade up and down
+ * - The button LED should respond instantly to presses via interrupt
+ * - All three should operate simultaneously without interfering with each other
+ * 
+ * HINTS:
+ * - You will need to track "previousMillis" for each timed operation
+ * - Use state variables to remember what each LED is doing between loop() calls
+ * - For the interrupt, use a volatile flag that the ISR sets and loop() reads
+ * - For debouncing, track when the button state last changed
+ * 
+ * ============================================================================
+ */
+
 #include <Arduino.h>
 
 // ============================================================================
