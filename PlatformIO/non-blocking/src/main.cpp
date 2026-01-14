@@ -86,6 +86,7 @@ void setup() {
 
   // Set button pin as input with internal pull-up resistor
   pinMode(buttonPin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(buttonPin),buttonLed,FALLING);
 
   Serial.println("Starting LED demo...");
 }
