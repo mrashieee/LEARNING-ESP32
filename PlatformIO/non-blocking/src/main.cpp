@@ -65,6 +65,9 @@ int fadeDirection = 1;    // 1 = fading up, -1 = fading down
 unsigned long currentTime = 0; // unsigned long for millis dunction
 bool ledBlinkState = false;  // to turn on led first when executing the code
 
+volatile bool ledButState = false;
+bool oldLedButState;
+
 // ============================================================================
 // Function Prototypes
 // ============================================================================
@@ -105,7 +108,7 @@ void loop() {
   fadeLed();
   
   // Control the third LED with the button
-  //buttonLed();
+  // buttonLed();
 }
 
 // ============================================================================
@@ -146,7 +149,7 @@ void fadeLed() {
       fadeValue = 0;
       fadeDirection = 1;
     }
-  prevFadeEvent = currentTime;
+    prevFadeEvent = currentTime;
   }
 }
 
@@ -155,12 +158,8 @@ void fadeLed() {
 // ============================================================================
 void buttonLed() {
   // Read the button state (LOW when pressed due to INPUT_PULLUP)
-  int buttonState = digitalRead(buttonPin);
-
-  // Turn LED on if button is pressed, off otherwise
-  if (buttonState == LOW) {
-    digitalWrite(buttonLedPin, HIGH);
-  } else {
-    digitalWrite(buttonLedPin, LOW);
+  if (!ledButState) {
+    ledButState = !ledButState;
+    digitalWrite(buttonLedPin, ledButState);
   }
 }
