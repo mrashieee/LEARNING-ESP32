@@ -50,11 +50,20 @@ int blinkDelay = 500;     // Delay between blink states (in milliseconds)
 int fadeDelay = 10;       // Delay between fade steps (in milliseconds)
 int fadeStep = 5;         // Amount to change brightness each step
 
+int blinkEvent = 500;  // Checking if the delay is correct in millis
+int fadeEvent = 10;  // for blink and fade events so i can use it in if ()
+
+unsigned long prevBlinkEvent = 0; // 2 buckets for keeping brevious blinked or faded time
+unsigned long prevFadeEvent = 0;
+
 // ============================================================================
 // State Variables
 // ============================================================================
 int fadeValue = 0;        // Current brightness of the fade LED (0-255)
 int fadeDirection = 1;    // 1 = fading up, -1 = fading down
+
+unsigned long currentTime = 0; // unsigned long for millis dunction
+bool ledBlinkState = false;  // to turn on led first when executing the code
 
 // ============================================================================
 // Function Prototypes
@@ -85,12 +94,15 @@ void setup() {
 // loop()
 // ============================================================================
 void loop() {
+  // millis timer saved to currentTime
+  currentTime = millis();
+
   // Blink the first LED
   blinkLed();
 
   // Fade the second LED
   fadeLed();
-
+  
   // Control the third LED with the button
   buttonLed();
 }
@@ -99,32 +111,42 @@ void loop() {
 // blinkLed() - Toggles the blink LED on and off
 // ============================================================================
 void blinkLed() {
-  digitalWrite(blinkLedPin, HIGH);  // Turn LED on
-  delay(blinkDelay);                // Wait
-  digitalWrite(blinkLedPin, LOW);   // Turn LED off
-  delay(blinkDelay);                // Wait
+  // checking if its time for led to blink
+  if (currentTime - prevBlinkEvent >= blinkEvent) {
+    if (!ledBlinkState) {
+      digitalWrite(blinkLedPin, HIGH);  // Turn LED on
+      ledBlinkState = !ledBlinkState;
+    }
+    if (ledBlinkState) {
+      digitalWrite(blinkLedPin, LOW);  // Turn LED off
+      ledBlinkState = !ledBlinkState;
+    }
+    prevBlinkEvent = currentTime;
+  }
 }
 
 // ============================================================================
 // fadeLed() - Fades the LED up and down using PWM
 // ============================================================================
 void fadeLed() {
-  // Set the LED brightness
-  analogWrite(fadeLedPin, fadeValue);
+  // checking if its time for led to fade
+  if (currentTime - prevFadeEvent >= fadeEvent) {
+    // Set the LED brightness
+    analogWrite(fadeLedPin, fadeValue);
 
-  // Update the fade value
-  fadeValue += fadeDirection * fadeStep;
+    // Update the fade value
+    fadeValue += fadeDirection * fadeStep;
 
-  // Reverse direction at the limits
-  if (fadeValue >= 255) {
-    fadeValue = 255;
-    fadeDirection = -1;
-  } else if (fadeValue <= 0) {
-    fadeValue = 0;
-    fadeDirection = 1;
+    // Reverse direction at the limits
+    if (fadeValue >= 255) {
+      fadeValue = 255;
+      fadeDirection = -1;
+    } else if (fadeValue <= 0) {
+      fadeValue = 0;
+      fadeDirection = 1;
+    }
+  prevFadeEvent = currentTime;
   }
-
-  delay(fadeDelay);
 }
 
 // ============================================================================
