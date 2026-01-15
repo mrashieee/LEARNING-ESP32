@@ -52,9 +52,11 @@ int fadeStep = 5;         // Amount to change brightness each step
 
 int blinkEvent = 500;  // Checking if the delay is correct in millis
 int fadeEvent = 10;  // for blink and fade events so i can use it in if ()
+int debounceEvent = 50;
 
 unsigned long prevBlinkEvent = 0; // 2 buckets for keeping brevious blinked or faded time
 unsigned long prevFadeEvent = 0;
+unsigned long prevDebounceEvent = 0;
 
 // ============================================================================
 // State Variables
@@ -66,7 +68,6 @@ unsigned long currentTime = 0; // unsigned long for millis dunction
 bool ledBlinkState = false;  // to turn on led first when executing the code
 
 volatile bool ledButState = false;
-bool oldLedButState;
 
 // ============================================================================
 // Function Prototypes
@@ -158,8 +159,10 @@ void fadeLed() {
 // ============================================================================
 void buttonLed() {
   // Read the button state (LOW when pressed due to INPUT_PULLUP)
-  if (!ledButState) {
+  if (currentTime - prevDebounceEvent >= debounceEvent) {
     ledButState = !ledButState;
     digitalWrite(buttonLedPin, ledButState);
+
+    prevBlinkEvent = currentTime;
   }
 }
