@@ -52,7 +52,7 @@ int fadeStep = 5;         // Amount to change brightness each step
 
 int blinkEvent = 500;  // Checking if the delay is correct in millis
 int fadeEvent = 10;  // for blink and fade events so i can use it in if ()
-int debounceEvent = 25;
+int debounceEvent = 20;
 
 unsigned long prevBlinkEvent = 0; // 2 buckets for keeping brevious blinked or faded time
 unsigned long prevFadeEvent = 0;
