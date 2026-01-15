@@ -163,7 +163,7 @@ void fadeLed() {
 void buttonLed() {
   // Read the button state (LOW when pressed due to INPUT_PULLUP)
   if (currentTime - prevDebounceEvent >= debounceEvent) {
-    ledButState = digitalRead(buttonPin);
+    ledButState = !digitalRead(buttonPin);
     if (ledButState != oldLedButState) {
       digitalWrite(buttonLedPin, ledButState);
       oldLedButState = ledButState;
