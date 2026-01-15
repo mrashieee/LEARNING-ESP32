@@ -67,7 +67,8 @@ int fadeDirection = 1;    // 1 = fading up, -1 = fading down
 unsigned long currentTime = 0; // unsigned long for millis dunction
 bool ledBlinkState = false;  // to turn on led first when executing the code
 
-volatile bool ledButState = false;
+byte ledButState;
+byte oldLedButState;
 
 // ============================================================================
 // Function Prototypes
@@ -91,6 +92,7 @@ void setup() {
   // Set button pin as input with internal pull-up resistor
   pinMode(buttonPin, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(buttonPin),buttonLed,FALLING);
+  oldLedButState = digitalRead(buttonPin);
 
   Serial.println("Starting LED demo...");
 }
@@ -159,10 +161,12 @@ void fadeLed() {
 // ============================================================================
 void buttonLed() {
   // Read the button state (LOW when pressed due to INPUT_PULLUP)
-  if (currentTime - prevDebounceEvent >= debounceEvent) {
-    ledButState = !ledButState;
-    digitalWrite(buttonLedPin, ledButState);
-
-    prevBlinkEvent = currentTime;
+  if (millis() - prevDebounceEvent >= debounceEvent) {
+    ledButState = digitalRead(buttonPin);
+    if (ledButState != oldLedButState) {
+      digitalWrite(buttonLedPin, ledButState);
+      oldLedButState = ledButState;
+      prevDebounceEvent = millis();
+    }
   }
 }
