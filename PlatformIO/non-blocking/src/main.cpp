@@ -123,12 +123,13 @@ void blinkLed() {
     if (!ledBlinkState) {
       digitalWrite(blinkLedPin, HIGH);  // Turn LED on
       ledBlinkState = !ledBlinkState;
+      prevBlinkEvent = currentTime;
     }
     if (ledBlinkState) {
       digitalWrite(blinkLedPin, LOW);  // Turn LED off
       ledBlinkState = !ledBlinkState;
+      prevBlinkEvent = currentTime;
     }
-    prevBlinkEvent = currentTime;
   }
 }
 
