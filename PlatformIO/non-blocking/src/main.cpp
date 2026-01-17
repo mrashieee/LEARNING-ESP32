@@ -39,9 +39,9 @@
 // Pin Definitions - Define which GPIO pins each component uses
 // ================================================================
 // Each pin is dedicated to one LED or the button input
-int blinkLedPin = 5;       // GPIO 5: LED that toggles on/off at regular intervals
-int fadeLedPin = 18;       // GPIO 18: LED that fades in/out smoothly (PWM capable pin)
-int buttonLedPin = 12;     // GPIO 12: LED controlled by button press (toggle on/off)
+int blinkLedPin = 5;          // GPIO 5: LED that toggles on/off at regular intervals
+int fadeLedPin = 18;         // GPIO 18: LED that fades in/out smoothly (PWM capable pin)
+int buttonLedPin = 12;      // GPIO 12: LED controlled by button press (toggle on/off)
 int buttonPin = 39;        // GPIO 39: Button input pin (triggers hardware interrupt)
 
 // ================================================================
@@ -49,9 +49,9 @@ int buttonPin = 39;        // GPIO 39: Button input pin (triggers hardware inter
 // ================================================================
 // These values define HOW LONG to wait before performing the next action
 // Using non-blocking timing (millis()) instead of delay() keeps the processor responsive
-int blinkEvent = 500;      // Delay between blink toggles (500ms = 0.5 seconds)
-int fadeEvent = 10;        // Delay between fade brightness steps (10ms = faster fading)
-int fadeStep = 5;          // How much to increase/decrease brightness each step (0-255 range)
+int blinkEvent = 500;         // Delay between blink toggles (500ms = 0.5 seconds)
+int fadeEvent = 10;          // Delay between fade brightness steps (10ms = faster fading)
+int fadeStep = 5;           // How much to increase/decrease brightness each step (0-255 range)
 int debounceEvent = 20;    // Time to wait for button signal to stabilize (debouncing: 20ms)
 
 // ================================================================
@@ -59,32 +59,32 @@ int debounceEvent = 20;    // Time to wait for button signal to stabilize (debou
 // ================================================================
 // These track the PREVIOUS time an action occurred, so we can calculate elapsed time
 // Formula: if (currentTime - previousTime >= interval) then perform action
-unsigned long prevBlinkEvent = 0;    // Stores the last time the blink LED toggled
-unsigned long prevFadeEvent = 0;     // Stores the last time the fade LED brightness changed
+unsigned long prevBlinkEvent = 0;      // Stores the last time the blink LED toggled
+unsigned long prevFadeEvent = 0;      // Stores the last time the fade LED brightness changed
 unsigned long prevDebounceEvent = 0; // Stores the last time button state was checked
 
 // ================================================================
 // State Variables - Remember the current state of each component
 // ================================================================
 // These variables PERSIST between loop() iterations, so we can track ongoing states
-int fadeValue = 0;         // Current brightness of fade LED (0=off, 255=max brightness)
+int fadeValue = 0;          // Current brightness of fade LED (0=off, 255=max brightness)
 int fadeDirection = 1;     // Direction of fade: 1 = fading up, -1 = fading down
 
-unsigned long currentTime = 0; // Current millis() value - updated every loop iteration
+unsigned long currentTime = 0;  // Current millis() value - updated every loop iteration
 bool ledBlinkState = false;    // Current state of blink LED: false=off, true=on
 
 // VOLATILE keyword is CRITICAL for variables modified in ISR (Interrupt Service Routine)
 // When a variable is volatile, the compiler won't cache it in a register - it will always
 // read the actual memory value. This prevents timing issues when ISR changes the variable
-volatile int ledState = 1;              // Modified in ISR, read in main loop - NEEDS VOLATILE
+volatile int ledState = 1;                   // Modified in ISR, read in main loop - NEEDS VOLATILE
 volatile unsigned long lastButtonPress = 0; // ISR will update this time - NEEDS VOLATILE
 
 // ================================================================
 // Function Prototypes - Declare function names before they're used
 // ================================================================
 // This tells the compiler these functions exist (defined later in the file)
-void blinkLed();      // Controls the blinking LED
-void fadeLed();       // Controls the fading LED
+void blinkLed();        // Controls the blinking LED
+void fadeLed();        // Controls the fading LED
 void buttonLed();     // ISR (Interrupt Service Routine) for button press
 
 // ================================================================
@@ -96,8 +96,8 @@ void setup() {
   Serial.begin(115200);
 
   // Configure all LED pins as OUTPUT (we're sending signals TO them)
-  pinMode(blinkLedPin, OUTPUT);  // Blink LED starts off
-  pinMode(fadeLedPin, OUTPUT);   // Fade LED starts at brightness 0
+  pinMode(blinkLedPin, OUTPUT);    // Blink LED starts off
+  pinMode(fadeLedPin, OUTPUT);    // Fade LED starts at brightness 0
   pinMode(buttonLedPin, OUTPUT); // Button LED starts off
 
   // Configure button pin as INPUT with internal pull-up resistor
