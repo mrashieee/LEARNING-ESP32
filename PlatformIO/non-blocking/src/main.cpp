@@ -118,16 +118,9 @@ void loop() {
 void blinkLed() {
   // checking if its time for led to blink
   if (currentTime - prevBlinkEvent >= blinkEvent) {
-    if (!ledBlinkState) {
-      digitalWrite(blinkLedPin, HIGH);  // Turn LED on
-      ledBlinkState = !ledBlinkState;
-      prevBlinkEvent = currentTime;
-    }
-    if (ledBlinkState) {
-      digitalWrite(blinkLedPin, LOW);  // Turn LED off
-      ledBlinkState = !ledBlinkState;
-      prevBlinkEvent = currentTime;
-    }
+    ledBlinkState = !ledBlinkState;
+    digitalWrite(blinkLedPin, ledBlinkState);
+    prevBlinkEvent = currentTime;
   }
 }
 
