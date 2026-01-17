@@ -152,7 +152,7 @@ void fadeLed() {
 // ============================================================================
 // buttonLed() - Turns LED on when button is pressed
 // ============================================================================
-void buttonLed() {
+void IRAM_ATTR buttonLed() {
   // Read the button state (LOW when pressed due to INPUT_PULLUP)
   if (currentTime - prevDebounceEvent >= debounceEvent) {
     if (digitalRead(buttonPin) == LOW) {
