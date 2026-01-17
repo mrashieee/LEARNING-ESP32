@@ -5,6 +5,7 @@ const int butPin = 4;
 const int ledPin = 2;
 
 // volatile will only change the value if hardware changes it
+// and prevents compiler optimization issues
 volatile bool toggleState = false;
 
 

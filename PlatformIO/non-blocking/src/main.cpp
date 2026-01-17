@@ -152,6 +152,8 @@ void fadeLed() {
 // ============================================================================
 // buttonLed() - Turns LED on when button is pressed
 // ============================================================================
+// IRAM_ATTR is used so it can run smoothly and safely from flash
+// when its unavailable
 void IRAM_ATTR buttonLed() {
   // Read the button state (LOW when pressed due to INPUT_PULLUP)
   if (currentTime - prevDebounceEvent >= debounceEvent) {
