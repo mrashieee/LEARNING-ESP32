@@ -147,7 +147,8 @@ void fadeLed() {
     if (fadeValue >= 255) {
       fadeValue = 255;
       fadeDirection = -1;
-    } else if (fadeValue <= 0) {
+    } 
+    else if (fadeValue <= 0) {
       fadeValue = 0;
       fadeDirection = 1;
     }
