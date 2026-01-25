@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "author": "Muhammad rashieee",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 35.4, "left": -64.4, "attrs": {} },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 75.14,
+      "left": -217.1,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": 61.6, "left": -45.78, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.2", "bb1:bn.1", "black", [ "v0" ] ],
+    [ "bb1:5b.g", "esp:2", "white", [ "v115.2", "h-220.8" ] ],
+    [ "esp:5V", "bb1:bp.1", "red", [ "v-57.45", "h192", "v19.2" ] ],
+    [ "bb1:4b.j", "bb1:bp.3", "red", [ "v0" ] ],
+    [ "bb1:6b.j", "bb1:bn.5", "black", [ "v38.4" ] ],
+    [ "pir1:VCC", "bb1:4b.f", "", [ "$bb" ] ],
+    [ "pir1:OUT", "bb1:5b.f", "", [ "$bb" ] ],
+    [ "pir1:GND", "bb1:6b.f", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}
